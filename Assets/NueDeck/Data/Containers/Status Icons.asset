@@ -19,4 +19,4 @@ MonoBehaviour:
   - iconStatus: 1
     iconSprite: {fileID: -214828719786938277, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
   - iconStatus: 2
-    iconSprite: {fileID: 8414397559482299720, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
+    iconSprite: {fileID: 21300000, guid: d4f8e07dc0829aa4ab0b01fbed7a6557, type: 3}

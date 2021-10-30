@@ -110,7 +110,6 @@ namespace NueDeck.Scripts.Managers
         public void OnAllyDeath(AllyBase targetAlly)
         {
             currentAllies.Remove(targetAlly);
-            Debug.Log(currentAllies.Count);
             if (currentAllies.Count<=0)
                 LoseCombat();
         } 

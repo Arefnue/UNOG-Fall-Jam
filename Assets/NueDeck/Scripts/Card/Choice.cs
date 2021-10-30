@@ -20,6 +20,7 @@ namespace NueDeck.Scripts.Card
         public void BuildReward(CardData cardData)
         {
             _cardObject.SetCard(cardData);
+            _cardObject.UpdateCardText();
         }
         
 
