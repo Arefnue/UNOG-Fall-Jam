@@ -55,8 +55,8 @@ namespace NueDeck.Scripts.Managers
           
             CollectionManager.instance.SetGameDeck();
            
-            UIManager.instance.combatCanvas.gameObject.SetActive(true);
-            UIManager.instance.informationCanvas.gameObject.SetActive(true);
+            UIManager.Instance.combatCanvas.gameObject.SetActive(true);
+            UIManager.Instance.informationCanvas.gameObject.SetActive(true);
             CurrentCombatState = CombatState.AllyTurn;
         }
         
@@ -154,7 +154,7 @@ namespace NueDeck.Scripts.Managers
         public void IncreaseMana(int target)
         {
             GameManager.instance.PersistentGameplayData.CurrentMana += target;
-            UIManager.instance.combatCanvas.SetPileTexts();
+            UIManager.Instance.combatCanvas.SetPileTexts();
         }
         
         public void HighlightCardTarget(ActionTargets targetTargets)
@@ -182,8 +182,8 @@ namespace NueDeck.Scripts.Managers
             CollectionManager.instance.drawPile.Clear();
             CollectionManager.instance.handPile.Clear();
             CollectionManager.instance.handController.hand.Clear();
-            UIManager.instance.combatCanvas.gameObject.SetActive(true);
-            UIManager.instance.combatCanvas.combatLosePanel.SetActive(true);
+            UIManager.Instance.combatCanvas.gameObject.SetActive(true);
+            UIManager.Instance.combatCanvas.combatLosePanel.SetActive(true);
         }
 
         public void WinCombat()
@@ -204,15 +204,15 @@ namespace NueDeck.Scripts.Managers
            
             if (GameManager.instance.PersistentGameplayData.IsFinalEncounter)
             {
-                UIManager.instance.combatCanvas.combatWinPanel.SetActive(true);
+                UIManager.Instance.combatCanvas.combatWinPanel.SetActive(true);
             }
             else
             {
                 GameManager.instance.PersistentGameplayData.CurrentEncounterId++;
-                UIManager.instance.combatCanvas.gameObject.SetActive(false);
-                UIManager.instance.rewardCanvas.gameObject.SetActive(true);
-                UIManager.instance.rewardCanvas.BuildReward(RewardType.Gold);
-                UIManager.instance.rewardCanvas.BuildReward(RewardType.Card);
+                UIManager.Instance.combatCanvas.gameObject.SetActive(false);
+                UIManager.Instance.rewardCanvas.gameObject.SetActive(true);
+                UIManager.Instance.rewardCanvas.BuildReward(RewardType.Gold);
+                UIManager.Instance.rewardCanvas.BuildReward(RewardType.Card);
             }
            
         }

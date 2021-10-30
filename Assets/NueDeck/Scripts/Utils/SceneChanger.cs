@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using NueDeck.Scripts.Managers;
 using NueDeck.Scripts.UI;
 using UnityEngine;
@@ -7,30 +9,59 @@ namespace NueDeck.Scripts.Utils
 {
     public class SceneChanger : MonoBehaviour
     {
+        
+        private enum SceneType
+        {
+            MainMenu,
+            Map,
+            Combat
+        }
         public void OpenMainMenuScene()
         {
-            SceneManager.LoadScene(GameManager.instance.SceneData.mainMenuSceneIndex);
-            UIManager.instance.SetCanvas(UIManager.instance.combatCanvas,false,true);
-            UIManager.instance.SetCanvas(UIManager.instance.informationCanvas,false,true);
-            UIManager.instance.SetCanvas(UIManager.instance.rewardCanvas,false,true);
-            GameManager.instance.InitGameplayData();
-            GameManager.instance.SetInitalHand();
+            StartCoroutine(DelaySceneChange(SceneType.MainMenu));
         }
 
+        private IEnumerator DelaySceneChange(SceneType type)
+        {
+            yield return StartCoroutine(UIManager.Instance.Fade(true));
+
+            switch (type)
+            {
+                case SceneType.MainMenu:
+                    UIManager.Instance.ChangeScene(GameManager.instance.SceneData.mainMenuSceneIndex);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.combatCanvas,false,true);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.informationCanvas,false,true);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.rewardCanvas,false,true);
+                    GameManager.instance.InitGameplayData();
+                    GameManager.instance.SetInitalHand();
+                    break;
+                case SceneType.Map:
+                    UIManager.Instance.ChangeScene(GameManager.instance.SceneData.mapSceneIndex);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.combatCanvas,false,true);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.informationCanvas,true,false);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.rewardCanvas,false,true);
+                    break;
+                case SceneType.Combat:
+                    UIManager.Instance.ChangeScene(GameManager.instance.SceneData.combatSceneIndex);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.combatCanvas,false,true);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.informationCanvas,true,false);
+                    UIManager.Instance.SetCanvas(UIManager.Instance.rewardCanvas,false,true);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+            
+           
+            
+        }
         public void OpenMapScene()
         {
-            SceneManager.LoadScene(GameManager.instance.SceneData.mapSceneIndex);
-            UIManager.instance.SetCanvas(UIManager.instance.combatCanvas,false,true);
-            UIManager.instance.SetCanvas(UIManager.instance.informationCanvas,true,false);
-            UIManager.instance.SetCanvas(UIManager.instance.rewardCanvas,false,true);
+            StartCoroutine(DelaySceneChange(SceneType.Map));
         }
 
         public void OpenCombatScene()
         {
-            SceneManager.LoadScene(GameManager.instance.SceneData.combatSceneIndex);
-            UIManager.instance.SetCanvas(UIManager.instance.combatCanvas,false,true);
-            UIManager.instance.SetCanvas(UIManager.instance.informationCanvas,true,false);
-            UIManager.instance.SetCanvas(UIManager.instance.rewardCanvas,false,true);
+            StartCoroutine(DelaySceneChange(SceneType.Combat));
         }
         
         

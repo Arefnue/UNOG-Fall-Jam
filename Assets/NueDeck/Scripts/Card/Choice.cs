@@ -28,7 +28,7 @@ namespace NueDeck.Scripts.Card
         {
             GameManager.instance.PersistentGameplayData.CurrentCardsList.Add(_cardObject.CardData);
             
-            UIManager.instance.rewardCanvas.choicePanel.DisablePanel();
+            UIManager.Instance.rewardCanvas.choicePanel.DisablePanel();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
