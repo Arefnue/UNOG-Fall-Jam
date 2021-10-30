@@ -16,8 +16,8 @@ MonoBehaviour:
   myTargets: 0
   usableWithoutTarget: 0
   myManaCost: 1
-  myName: Purged Attack
-  mySprite: {fileID: 21300000, guid: 5da79233f66c40346875f782a8679a4a, type: 3}
+  myName: The box
+  mySprite: {fileID: 21300000, guid: aa95ea7eeb03a3047bb8fabd0e27e9de, type: 3}
   actionList:
   - myPlayerActionType: 8
     value: 2

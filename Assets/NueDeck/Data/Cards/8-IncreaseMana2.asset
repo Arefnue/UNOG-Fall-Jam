@@ -17,7 +17,7 @@ MonoBehaviour:
   usableWithoutTarget: 1
   myManaCost: 0
   myName: Cat Milk
-  mySprite: {fileID: 21300000, guid: c038db04270a911419c7d861871b8d86, type: 3}
+  mySprite: {fileID: 21300000, guid: 400864913d80885489ca0cd6c23f5b8e, type: 3}
   actionList:
   - myPlayerActionType: 6
     value: 2

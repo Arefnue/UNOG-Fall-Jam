@@ -17,7 +17,7 @@ MonoBehaviour:
   usableWithoutTarget: 0
   myManaCost: 0
   myName: Tail Play
-  mySprite: {fileID: 21300000, guid: 2ba779ccdbcd63f4c9bc21c80cc0c9a7, type: 3}
+  mySprite: {fileID: 21300000, guid: 4746b4f2f40dc354d9cfd3cab6886efe, type: 3}
   actionList:
   - myPlayerActionType: 0
     value: 4
