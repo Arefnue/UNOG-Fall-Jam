@@ -1,4 +1,5 @@
 ﻿using NueDeck.Scripts.Enums;
+using NueDeck.Scripts.Managers;
 using UnityEngine;
 
 namespace NueDeck.Scripts.Card.CardActions
@@ -12,10 +13,12 @@ namespace NueDeck.Scripts.Card.CardActions
             if (actionParameters.targetCharacter)
             {
                 actionParameters.targetCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
+                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Heal);
             }
             else
             {
                 actionParameters.selfCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
+                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Heal);
             }
         }
     }

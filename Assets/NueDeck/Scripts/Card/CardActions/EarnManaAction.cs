@@ -10,6 +10,7 @@ namespace NueDeck.Scripts.Card.CardActions
         public override void DoAction(CardActionParameters actionParameters)
         {
             CombatManager.instance.IncreaseMana(Mathf.RoundToInt(actionParameters.value));
+            FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Buff);
         }
     }
 }

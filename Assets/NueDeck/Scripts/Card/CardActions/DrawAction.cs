@@ -1,5 +1,6 @@
 ﻿using NueDeck.Scripts.Collection;
 using NueDeck.Scripts.Enums;
+using NueDeck.Scripts.Managers;
 using UnityEngine;
 
 namespace NueDeck.Scripts.Card.CardActions
@@ -10,6 +11,7 @@ namespace NueDeck.Scripts.Card.CardActions
         public override void DoAction(CardActionParameters actionParameters)
         {
             CollectionManager.instance.DrawCards(Mathf.RoundToInt(actionParameters.value));
+            
         }
     }
 }

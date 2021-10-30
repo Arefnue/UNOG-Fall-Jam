@@ -1,4 +1,5 @@
 ﻿using NueDeck.Scripts.Enums;
+using NueDeck.Scripts.Managers;
 using UnityEngine;
 
 namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
@@ -11,10 +12,12 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
             if (actionParameters.targetCharacter)
             {
                 actionParameters.targetCharacter.CharacterStats.ApplyStatus(StatusType.Poison,Mathf.RoundToInt(actionParameters.value));
+                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Poison);
             }
             else
             {
                 actionParameters.selfCharacter.CharacterStats.ApplyStatus(StatusType.Poison,Mathf.RoundToInt(actionParameters.value));
+                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Poison);
             }
         }
     }
