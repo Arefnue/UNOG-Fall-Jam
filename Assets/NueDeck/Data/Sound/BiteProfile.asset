@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
-  m_Name: SpaceAttackProfile
+  m_Name: BiteProfile
   m_EditorClassIdentifier: 
   randomClipList:
-  - {fileID: 8300000, guid: 42c003e7f26ca034f9c40089b30ed50d, type: 3}
+  - {fileID: 8300000, guid: 5004e1fcf88ccb548afa10f68a3710dd, type: 3}
+  - {fileID: 8300000, guid: 6940cc7b9264ed24ba8c09f8235c178b, type: 3}
+  - {fileID: 8300000, guid: 03641240681c56e43b01e37dc4b6edcc, type: 3}

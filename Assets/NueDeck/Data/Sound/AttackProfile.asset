@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AttackProfile
   m_EditorClassIdentifier: 
   randomClipList:
-  - {fileID: 8300000, guid: e5dae9b8fb322e84fb9e53df38b15672, type: 3}
-  - {fileID: 8300000, guid: c582810d2430fc74c87c3fb5be48bb9d, type: 3}
-  - {fileID: 8300000, guid: 17afab8c1ecd9244ab40dc21fb17e464, type: 3}
+  - {fileID: 8300000, guid: 5295fa92dd8cd864b9999036cbd7e9ff, type: 3}
+  - {fileID: 8300000, guid: 38b4c41dfad26834b9701bf3853ade47, type: 3}
+  - {fileID: 8300000, guid: a91554e9620f2b14a959bd10e1d30bc6, type: 3}

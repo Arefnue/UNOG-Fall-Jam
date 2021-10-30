@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DrawProfile
   m_EditorClassIdentifier: 
   randomClipList:
-  - {fileID: 8300000, guid: 39474aebe0108194d90b809b18096d01, type: 3}
+  - {fileID: 8300000, guid: 9c3e6cb5c579e60429fd4dc81e1f760e, type: 3}

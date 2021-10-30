@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: PowerProfile
   m_EditorClassIdentifier: 
   randomClipList:
-  - {fileID: 8300000, guid: c3fc4a0d60c1c6d43a656aac0b9d145c, type: 3}
+  - {fileID: 8300000, guid: 1c2a838f58132a544be9942a5b891b34, type: 3}
+  - {fileID: 8300000, guid: d65c6ea57e708394ea5739d72923fd84, type: 3}
+  - {fileID: 8300000, guid: bdf301f78ba192a4e9bd55876e095979, type: 3}
