@@ -14,9 +14,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myID: 10
   myTargets: 0
+  usableWithoutTarget: 0
   myManaCost: 0
-  myName: Hair Ball
-  myDescription: Deal 4 damage
-  mySprite: {fileID: 21300000, guid: 1113310f8619a8747b68ee8b7fc7d63d, type: 3}
-  actionList: []
-  mySoundProfileData: {fileID: 11400000, guid: 9c4dc29fc2148ed43a7e14bb55832e50, type: 2}
+  myName: Tail Play
+  mySprite: {fileID: 21300000, guid: 2ba779ccdbcd63f4c9bc21c80cc0c9a7, type: 3}
+  actionList:
+  - myPlayerActionType: 0
+    value: 4
+  - myPlayerActionType: 5
+    value: 1
+  descriptionDataList:
+  - useText: 1
+    useValue: 0
+    text: 'Deal '
+    defaultValue: 0
+    useValueColor: 0
+    valueColor: {r: 0, g: 0, b: 0, a: 0}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 1
+    modiferStatus: 2
+  - useText: 0
+    useValue: 1
+    text: Deal
+    defaultValue: 4
+    useValueColor: 1
+    valueColor: {r: 0.64705884, g: 0.18823531, b: 0.18823531, a: 1}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 1
+    modiferStatus: 2
+  - useText: 1
+    useValue: 0
+    text: ' damage.'
+    defaultValue: 4
+    useValueColor: 1
+    valueColor: {r: 0.64705884, g: 0.18823531, b: 0.18823531, a: 1}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 0
+    modiferStatus: 2
+  - useText: 1
+    useValue: 0
+    text: 'Draw '
+    defaultValue: 4
+    useValueColor: 1
+    valueColor: {r: 0.64705884, g: 0.18823531, b: 0.18823531, a: 1}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 0
+    modiferStatus: 2
+  - useText: 0
+    useValue: 1
+    text: 'Draw '
+    defaultValue: 1
+    useValueColor: 1
+    valueColor: {r: 0.81568635, g: 0.854902, b: 0.5686275, a: 1}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 0
+    modiferStatus: 2
+  - useText: 1
+    useValue: 0
+    text: ' card'
+    defaultValue: 1
+    useValueColor: 0
+    valueColor: {r: 0.81568635, g: 0.854902, b: 0.5686275, a: 1}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 0
+    modiferStatus: 2
+  audioType: 0

@@ -17,9 +17,29 @@ MonoBehaviour:
   usableWithoutTarget: 1
   myManaCost: 2
   myName: Hard Work
-  myDescription: Increase strength by 10
   mySprite: {fileID: 21300000, guid: a0c75614ede963a46af4bc352b3faabd, type: 3}
   actionList:
   - myPlayerActionType: 3
     value: 10
-  mySoundProfileData: {fileID: 11400000, guid: 9c4dc29fc2148ed43a7e14bb55832e50, type: 2}
+  descriptionDataList:
+  - useText: 1
+    useValue: 0
+    text: 'Increase strength by '
+    defaultValue: 0
+    useValueColor: 0
+    valueColor: {r: 0, g: 0, b: 0, a: 0}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 0
+    modiferStatus: 0
+  - useText: 0
+    useValue: 1
+    text: 'Increase strength by '
+    defaultValue: 10
+    useValueColor: 1
+    valueColor: {r: 0.8705883, g: 0.61960787, b: 0.25490198, a: 1}
+    useTextColor: 0
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    useModifer: 0
+    modiferStatus: 0
+  audioType: 9
