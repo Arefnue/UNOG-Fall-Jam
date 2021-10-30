@@ -24,7 +24,7 @@ MonoBehaviour:
   descriptionDataList:
   - useText: 1
     useValue: 0
-    text: Heal
+    text: 'Heal '
     defaultValue: 0
     useValueColor: 0
     valueColor: {r: 0, g: 0, b: 0, a: 0}
@@ -37,7 +37,7 @@ MonoBehaviour:
     text: Heal
     defaultValue: 8
     useValueColor: 1
-    valueColor: {r: 0.77647066, g: 0.31764707, b: 0.5921569, a: 1}
+    valueColor: {r: 0.4784314, g: 0.21176472, b: 0.48235297, a: 1}
     useTextColor: 0
     textColor: {r: 0, g: 0, b: 0, a: 0}
     useModifer: 0

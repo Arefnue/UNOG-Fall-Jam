@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2612027158f847538279f7d8f10dff91, type: 3}
   m_Name: Parrot
   m_EditorClassIdentifier: 
-  characterID: 0
+  characterID: 2
   characterName: Parrot
   characterDescription: This is a parrot
   maxHealth: 150

@@ -37,7 +37,7 @@ MonoBehaviour:
     text: Convert all poison to
     defaultValue: 2
     useValueColor: 1
-    valueColor: {r: 0.9058824, g: 0.8352942, b: 0.7019608, a: 1}
+    valueColor: {r: 0.64705884, g: 0.18823531, b: 0.18823531, a: 1}
     useTextColor: 0
     textColor: {r: 0, g: 0, b: 0, a: 0}
     useModifer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
     useValueColor: 0
     valueColor: {r: 0.9058824, g: 0.8352942, b: 0.7019608, a: 1}
     useTextColor: 1
-    textColor: {r: 0.9058824, g: 0.8352942, b: 0.7019608, a: 1}
+    textColor: {r: 0.64705884, g: 0.18823531, b: 0.18823531, a: 1}
     useModifer: 0
     modiferStatus: 0
   - useText: 1

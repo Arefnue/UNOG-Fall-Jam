@@ -18,7 +18,7 @@ MonoBehaviour:
     stageId: 0
     bossEncounterList:
     - enemyList:
-      - {fileID: 243822687015991123, guid: 36d8b1640cc4b9146b1bdcae06c505a1, type: 3}
+      - {fileID: 243822687015991123, guid: ad41c45476d832543a300abcd237c5c8, type: 3}
     enemyEncounterList:
     - enemyList:
       - {fileID: 243822687015991123, guid: 80588a3cfbf5b57459f8b4d4b1483f89, type: 3}
