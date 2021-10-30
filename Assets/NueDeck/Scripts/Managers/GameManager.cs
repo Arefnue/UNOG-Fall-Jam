@@ -72,17 +72,8 @@ namespace NueDeck.Scripts.Managers
                 }
           
         }
-        
-        public void NextEncounter()
-        {
-            PersistentGameplayData.CurrentEncounterId++;
-            if (PersistentGameplayData.CurrentEncounterId>=EncounterData.enemyEncounterList[PersistentGameplayData.CurrentStageId].enemyEncounterList.Count)
-            {
-                PersistentGameplayData.CurrentEncounterId = Random.Range(0,
-                    EncounterData.enemyEncounterList[PersistentGameplayData.CurrentStageId].enemyEncounterList.Count);
-            }
-        }
 
+        
         public void ExitApp()
         {
             

@@ -77,7 +77,7 @@ namespace NueDeck.Scripts.Utils
             else
                 SceneManager.LoadScene(sceneId);
         }
-
+        
         public void ExitApp()
         {
             GameManager.instance.ExitApp();
