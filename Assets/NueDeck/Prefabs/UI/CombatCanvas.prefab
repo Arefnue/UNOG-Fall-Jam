@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 1244391066}
   - component: {fileID: 1244391065}
   - component: {fileID: 411699592765095066}
+  - component: {fileID: 6754763821542325643}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -346,6 +347,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6754763821542325643}
+        m_TargetAssemblyTypeName: NueDeck.Scripts.Utils.PlaySound, Assembly-CSharp
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &411699592765095066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +371,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7e3f294a7c2c44eb6cffeb9f94b306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6754763821542325643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244391063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb50ee18843aca43923ca3c8ff18d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myProfileData: {fileID: 11400000, guid: 2d30565e54caf3e40a21dfdac091b79e, type: 2}
 --- !u!1 &1263527696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1481,7 @@ GameObject:
   - component: {fileID: 5135521351063040785}
   - component: {fileID: 3667953264884879884}
   - component: {fileID: 5161999677491548847}
+  - component: {fileID: 8028617315795727580}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -1576,6 +1603,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8028617315795727580}
+        m_TargetAssemblyTypeName: NueDeck.Scripts.Utils.PlaySound, Assembly-CSharp
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5161999677491548847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1627,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7e3f294a7c2c44eb6cffeb9f94b306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8028617315795727580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860981494811977150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb50ee18843aca43923ca3c8ff18d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myProfileData: {fileID: 11400000, guid: 2d30565e54caf3e40a21dfdac091b79e, type: 2}
 --- !u!1 &4482697461171194065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,10 +2422,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -5677451655352235763, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
-    m_PressedSprite: {fileID: -1710845047738627229, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
-    m_SelectedSprite: {fileID: -5677451655352235763, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
-    m_DisabledSprite: {fileID: 8231418172065189440, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 952df84e0217dd54cac03eed17343e07, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: fd1393ecf47a8be468550cf6e0cd3be8, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 952df84e0217dd54cac03eed17343e07, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 7270ea26fc838804ba3df42aacdd25bf, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2397,8 +2449,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Arif.Scripts.PlaySound, Assembly-CSharp
+      - m_Target: {fileID: 2405140796223434041}
+        m_TargetAssemblyTypeName: NueDeck.Scripts.Utils.PlaySound, Assembly-CSharp
         m_MethodName: PlayButton
         m_Mode: 1
         m_Arguments:
@@ -2421,7 +2473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb50ee18843aca43923ca3c8ff18d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myProfileData: {fileID: 0}
+  myProfileData: {fileID: 11400000, guid: 2d30565e54caf3e40a21dfdac091b79e, type: 2}
 --- !u!1 &9069999821265480322
 GameObject:
   m_ObjectHideFlags: 0

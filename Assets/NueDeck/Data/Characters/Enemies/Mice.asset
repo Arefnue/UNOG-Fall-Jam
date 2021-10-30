@@ -38,7 +38,7 @@ MonoBehaviour:
     intention: {fileID: 11400000, guid: e7deaaa3f01f8f54ab8c29a0ce3c8f31, type: 2}
     actionList:
     - enemyActionType: 2
-      value: 5
+      value: 4
     soundProfile: {fileID: 11400000, guid: c558e0a45b0633a4d9313997a50bb80a, type: 2}
     hideActionValue: 0
   - name: Attack Double
