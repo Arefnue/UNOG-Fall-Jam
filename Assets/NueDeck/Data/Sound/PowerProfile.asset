@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: PowerProfile
   m_EditorClassIdentifier: 
+  audioType: 9
   randomClipList:
   - {fileID: 8300000, guid: 1c2a838f58132a544be9942a5b891b34, type: 3}
   - {fileID: 8300000, guid: d65c6ea57e708394ea5739d72923fd84, type: 3}

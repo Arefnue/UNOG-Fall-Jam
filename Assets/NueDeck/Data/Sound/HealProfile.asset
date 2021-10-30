@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: HealProfile
   m_EditorClassIdentifier: 
+  audioType: 7
   randomClipList:
   - {fileID: 8300000, guid: 0e3fca2d41b0cd64197dbe43fad73ac9, type: 3}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: SwingProfile
   m_EditorClassIdentifier: 
+  audioType: 10
   randomClipList:
   - {fileID: 8300000, guid: 6d08e4d069703324481eb941f5110609, type: 3}
   - {fileID: 8300000, guid: 626aff0f494063d47a089e0e3035d5d0, type: 3}

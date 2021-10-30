@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: BiteProfile
   m_EditorClassIdentifier: 
+  audioType: 1
   randomClipList:
   - {fileID: 8300000, guid: 5004e1fcf88ccb548afa10f68a3710dd, type: 3}
   - {fileID: 8300000, guid: 6940cc7b9264ed24ba8c09f8235c178b, type: 3}

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: PoisonProfile
   m_EditorClassIdentifier: 
+  audioType: 8
   randomClipList:
   - {fileID: 8300000, guid: 92c458acce2c20b4fb625aa6fb0d4601, type: 3}

@@ -11,7 +11,7 @@ namespace NueDeck.Scripts.Card.CardActions
         public override void DoAction(CardActionParameters actionParameters)
         {
             CollectionManager.instance.DrawCards(Mathf.RoundToInt(actionParameters.value));
-            
+            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
         }
     }
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: BlockProfile
   m_EditorClassIdentifier: 
+  audioType: 2
   randomClipList:
   - {fileID: 8300000, guid: 343a43f111e7b4a49b12f9af2b4efdba, type: 3}

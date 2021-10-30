@@ -12,6 +12,7 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
         {
             actionParameters.targetCharacter.CharacterStats.Damage(Mathf.RoundToInt(actionParameters.value)+actionParameters.selfCharacter.CharacterStats.statusDict[StatusType.Strength].StatusValue);
             FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Attack);
+            AudioManager.Instance.PlayOneShot(AudioActionType.Attack);
         }
     }
 }

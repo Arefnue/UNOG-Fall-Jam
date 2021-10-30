@@ -20,6 +20,7 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
                 actionParameters.selfCharacter.CharacterStats.ApplyStatus(StatusType.Block,Mathf.RoundToInt(actionParameters.value)+actionParameters.selfCharacter.CharacterStats.statusDict[StatusType.Dexterity].StatusValue);
                 FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Block);
             }
+            AudioManager.Instance.PlayOneShot(AudioActionType.Block);
         }
     }
 }

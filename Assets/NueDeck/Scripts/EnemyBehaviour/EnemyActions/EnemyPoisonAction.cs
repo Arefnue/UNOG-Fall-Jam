@@ -19,6 +19,7 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
                 actionParameters.selfCharacter.CharacterStats.ApplyStatus(StatusType.Poison,Mathf.RoundToInt(actionParameters.value));
                 FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Poison);
             }
+            AudioManager.Instance.PlayOneShot(AudioActionType.Poison);
         }
     }
 }

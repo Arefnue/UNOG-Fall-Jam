@@ -14,12 +14,14 @@ namespace NueDeck.Scripts.Card.CardActions
             {
                 actionParameters.targetCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
                 FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Heal);
+                
             }
             else
             {
                 actionParameters.selfCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
                 FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Heal);
             }
+            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
         }
     }
 }

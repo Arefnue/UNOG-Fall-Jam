@@ -19,6 +19,7 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
                 actionParameters.selfCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
                 FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Heal);
             }
+            AudioManager.Instance.PlayOneShot(AudioActionType.Heal);
         }
     }
 }

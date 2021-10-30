@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f29259e87442338a016acd10256ddc, type: 3}
   m_Name: EnemyDeathProfile
   m_EditorClassIdentifier: 
+  audioType: 6
   randomClipList:
   - {fileID: 8300000, guid: d854fab1b5e0c5c488e2449983d0aa11, type: 3}

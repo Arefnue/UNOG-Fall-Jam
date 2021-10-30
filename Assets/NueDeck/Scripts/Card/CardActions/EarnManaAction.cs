@@ -11,6 +11,7 @@ namespace NueDeck.Scripts.Card.CardActions
         {
             CombatManager.instance.IncreaseMana(Mathf.RoundToInt(actionParameters.value));
             FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Buff);
+            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
         }
     }
 }

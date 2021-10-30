@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using NueDeck.Scripts.Data.Containers;
+using NueDeck.Scripts.Enums;
 using UnityEngine;
 
 namespace NueDeck.Scripts.Managers
@@ -6,9 +11,14 @@ namespace NueDeck.Scripts.Managers
     {
         public static AudioManager Instance;
 
-        public AudioSource musicSource;
-        public AudioSource sfxSource;
-        public AudioSource buttonSource;
+        [SerializeField]private AudioSource musicSource;
+        [SerializeField]private AudioSource sfxSource;
+        [SerializeField]private AudioSource buttonSource;
+
+        [SerializeField] private List<SoundProfileData> soundProfileDataList;
+        
+        
+        private Dictionary<AudioActionType, SoundProfileData> _audioDict = new Dictionary<AudioActionType, SoundProfileData>();
         
         private void Awake()
         {
@@ -21,7 +31,13 @@ namespace NueDeck.Scripts.Managers
             else
             {
                 Destroy(gameObject);
+                return;
             }
+            for (int i = 0; i < Enum.GetValues(typeof(AudioActionType)).Length; i++)
+            {
+                _audioDict.Add((AudioActionType)i,soundProfileDataList.FirstOrDefault(x=>x.audioType == (AudioActionType)i));
+            }
+            
         }
 
 
@@ -32,7 +48,24 @@ namespace NueDeck.Scripts.Managers
                 musicSource.clip = clip;
                 musicSource.Play();
             }
-           
+        }
+
+        public void PlayMusic(AudioActionType type)
+        {
+            var clip = _audioDict[type].GetRandomClip();
+           PlayMusic(clip);
+        }
+
+        public void PlayOneShot(AudioActionType type)
+        {
+            var clip = _audioDict[type].GetRandomClip();
+            PlayOneShot(clip);
+        }
+
+        public void PlayOneShotButton(AudioActionType type)
+        {
+            var clip = _audioDict[type].GetRandomClip();
+            PlayOneShotButton(clip);
         }
 
         public void PlayOneShot(AudioClip clip)
@@ -50,5 +83,8 @@ namespace NueDeck.Scripts.Managers
                 buttonSource.PlayOneShot(clip);
             }
         }
+        
     }
+   
+    
 }

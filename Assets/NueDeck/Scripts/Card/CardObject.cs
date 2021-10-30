@@ -76,7 +76,7 @@ namespace NueDeck.Scripts.Card
             foreach (var playerAction in CardData.actionList)
                 CardActionProcessor.GetAction(playerAction.myPlayerActionType)
                     .DoAction(new CardActionParameters(playerAction.value,
-                        target,self));
+                        target,self,CardData));
             
             CollectionManager.instance.OnCardPlayed(this);
             
