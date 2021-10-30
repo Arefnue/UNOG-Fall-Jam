@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RewardCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9173700988199943096, guid: ffd67f0562e69264b8c1b92677886e9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd67f0562e69264b8c1b92677886e9f, type: 3}
 --- !u!224 &6382937254159657753 stripped

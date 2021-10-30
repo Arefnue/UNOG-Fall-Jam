@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 735061151}
   - component: {fileID: 735061152}
   m_Layer: 11
-  m_Name: EnemyExample 1
+  m_Name: Enemy_Mice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ba82d88df94f47bdd0998ffa0a43f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: b1d13a4519e7f5e449ada40af494fdc9, type: 2}
+  enemyData: {fileID: 11400000, guid: 9d49b6e2ff3d12c4da72676bf3caf83f, type: 2}
   enemyCanvas: {fileID: 7422249267346903092}
   deathSoundProfileData: {fileID: 11400000, guid: 7e15e2a10065ab54c8eaf26154af0156, type: 2}
 --- !u!54 &735061151

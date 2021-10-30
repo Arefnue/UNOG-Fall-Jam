@@ -15,7 +15,6 @@ namespace NueDeck.Scripts.Collection
 
         [Header("Controllers")] 
         public HandController handController;
-        public RewardController rewardController;
         
         [HideInInspector] public List<CardData> drawPile = new List<CardData>();
         [HideInInspector] public List<CardData> handPile = new List<CardData>();

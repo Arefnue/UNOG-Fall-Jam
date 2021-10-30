@@ -22,7 +22,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4889456243c575442b34a89b3debcdbb, type: 2}
     - {fileID: 11400000, guid: 6c7592c82199fdc418f687778ba6bce9, type: 2}
   goldReward:
-    rewardSprite: {fileID: 4322673043527013044, guid: a707003c96586cc41b22ae32a9cdb636, type: 3}
+    rewardSprite: {fileID: 21300000, guid: 7e363b8dbe4358843942545cdf974052, type: 3}
     rewardDescription: Gain gold
     minGold: 10
     maxGold: 100

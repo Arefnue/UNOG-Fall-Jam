@@ -54,7 +54,7 @@ namespace NueDeck.Scripts.Managers
             BuildAllies();
           
             CollectionManager.instance.SetGameDeck();
-            CollectionManager.instance.rewardController.choiceParent.gameObject.SetActive(false);
+           
             UIManager.instance.combatCanvas.gameObject.SetActive(true);
             UIManager.instance.informationCanvas.gameObject.SetActive(true);
             CurrentCombatState = CombatState.AllyTurn;
