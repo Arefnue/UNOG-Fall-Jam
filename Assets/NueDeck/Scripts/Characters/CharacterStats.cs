@@ -156,7 +156,8 @@ namespace NueDeck.Scripts.Characters
                 if (statusDict[StatusType.Block].IsActive)
                 {
                     ApplyStatus(StatusType.Block,-value);
-                
+
+                    remainingDamage = 0;
                     if (statusDict[StatusType.Block].StatusValue < 0)
                     {
                         remainingDamage = statusDict[StatusType.Block].StatusValue * -1;
