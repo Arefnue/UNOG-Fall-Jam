@@ -10,8 +10,9 @@ namespace NueDeck.Scripts.Card.CardActions
         public override CardActionType ActionType => CardActionType.Draw;
         public override void DoAction(CardActionParameters actionParameters)
         {
-            CollectionManager.instance.DrawCards(Mathf.RoundToInt(actionParameters.value));
-            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
+            CollectionManager.instance.DrawCards(Mathf.RoundToInt(actionParameters.Value));
+            FxManager.Instance.PlayFx(actionParameters.SelfCharacter.transform,FxType.Buff);
+            AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }
     }
 }

@@ -9,21 +9,16 @@ namespace NueDeck.Scripts.Card.CardActions
         public override CardActionType ActionType => CardActionType.IncreaseMaxHealth;
         public override void DoAction(CardActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.IncreaseMaxHealth(Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Heal);
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Buff);
-               
-            }
-            else
-            {
-                actionParameters.selfCharacter.CharacterStats.IncreaseMaxHealth(Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Heal);
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Buff);
-                
-            }
-            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
+            var newTarget = actionParameters.TargetCharacter
+                ? actionParameters.TargetCharacter
+                : actionParameters.SelfCharacter;
+            
+            if (newTarget) return;
+            
+            newTarget.CharacterStats.IncreaseMaxHealth(Mathf.RoundToInt(actionParameters.Value));
+            
+            FxManager.Instance.PlayFx(newTarget.transform,FxType.Buff);
+            AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }
     }
 }

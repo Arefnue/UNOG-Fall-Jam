@@ -9,19 +9,16 @@ namespace NueDeck.Scripts.Card.CardActions
         public override CardActionType ActionType => CardActionType.IncreaseStrength;
         public override void DoAction(CardActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.ApplyStatus(StatusType.Strength,Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Str);
-               
-            }
-            else
-            {
-                actionParameters.selfCharacter.CharacterStats.ApplyStatus(StatusType.Strength,Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Str);
-              
-            }
-            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
+            var newTarget = actionParameters.TargetCharacter
+                ? actionParameters.TargetCharacter
+                : actionParameters.SelfCharacter;
+            
+            if (newTarget) return;
+            
+            newTarget.CharacterStats.ApplyStatus(StatusType.Strength,Mathf.RoundToInt(actionParameters.Value));
+            FxManager.Instance.PlayFx(newTarget.transform,FxType.Str);
+            
+            AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }
     }
 }

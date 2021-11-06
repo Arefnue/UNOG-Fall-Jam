@@ -10,20 +10,18 @@ namespace NueDeck.Scripts.Card.CardActions
         
         public override void DoAction(CardActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.Heal(actionParameters.targetCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue*Mathf.RoundToInt(actionParameters.value));
-                actionParameters.targetCharacter.CharacterStats.ClearStatus(StatusType.Poison);
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Heal);
-                
-            }
-            else
-            {
-                actionParameters.selfCharacter.CharacterStats.Heal(actionParameters.selfCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue*Mathf.RoundToInt(actionParameters.value));
-                actionParameters.selfCharacter.CharacterStats.ClearStatus(StatusType.Poison);
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Heal);
-            }
-            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
+            
+            var newTarget = actionParameters.TargetCharacter
+                ? actionParameters.TargetCharacter
+                : actionParameters.SelfCharacter;
+
+            if (newTarget) return;
+            
+            newTarget.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.SelfCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue*actionParameters.Value));
+            actionParameters.SelfCharacter.CharacterStats.ClearStatus(StatusType.Poison);
+            
+            FxManager.Instance.PlayFx(newTarget.transform,FxType.Heal);
+            AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }
     }
 }

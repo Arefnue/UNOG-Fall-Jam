@@ -9,12 +9,13 @@ namespace NueDeck.Scripts.Card.CardActions
         public override CardActionType ActionType => CardActionType.Attack;
         public override void DoAction(CardActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.Damage(Mathf.RoundToInt(actionParameters.value)+actionParameters.selfCharacter.CharacterStats.statusDict[StatusType.Strength].StatusValue);
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Attack);
-                AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
-            }
+            if (!actionParameters.TargetCharacter) return;
+            
+            actionParameters.TargetCharacter.CharacterStats.Damage(Mathf.RoundToInt(actionParameters.Value +
+                actionParameters.SelfCharacter.CharacterStats.statusDict[StatusType.Strength].StatusValue));
+            
+            FxManager.Instance.PlayFx(actionParameters.TargetCharacter.transform,FxType.Attack);
+            AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }
     }
 }

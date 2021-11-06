@@ -6,16 +6,16 @@ namespace NueDeck.Scripts.Card
 {
     public class CardActionParameters
     {
-        public float value;
-        public CharacterBase targetCharacter;
-        public CharacterBase selfCharacter;
-        public CardData cardData;
+        public readonly float Value;
+        public readonly CharacterBase TargetCharacter;
+        public readonly CharacterBase SelfCharacter;
+        public readonly CardData CardData;
         public CardActionParameters(float value,CharacterBase target, CharacterBase self,CardData cardData)
         {
-            this.value = value;
-            targetCharacter = target;
-            selfCharacter = self;
-            this.cardData = cardData;
+            Value = value;
+            TargetCharacter = target;
+            SelfCharacter = self;
+            CardData = cardData;
         }
     }
     public abstract class CardActionBase

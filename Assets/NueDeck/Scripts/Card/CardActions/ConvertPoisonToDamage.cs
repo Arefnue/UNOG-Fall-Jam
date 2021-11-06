@@ -10,13 +10,15 @@ namespace NueDeck.Scripts.Card.CardActions
         
         public override void DoAction(CardActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.Damage(actionParameters.targetCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue*Mathf.RoundToInt(actionParameters.value));
-                actionParameters.targetCharacter.CharacterStats.ClearStatus(StatusType.Poison);
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Heal);
-            }
-            AudioManager.Instance.PlayOneShot(actionParameters.cardData.audioType);
+            if (!actionParameters.TargetCharacter) return;
+            
+            actionParameters.TargetCharacter.CharacterStats.Damage(Mathf.RoundToInt(
+                actionParameters.SelfCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue * actionParameters.Value));
+                
+            actionParameters.SelfCharacter.CharacterStats.ClearStatus(StatusType.Poison);
+            
+            FxManager.Instance.PlayFx(actionParameters.TargetCharacter.transform,FxType.Attack);
+            AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }
     }
 }
