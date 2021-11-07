@@ -13,7 +13,7 @@ namespace NueDeck.Scripts.Card.CardActions
             if (!actionParameters.TargetCharacter) return;
             
             actionParameters.TargetCharacter.CharacterStats.Damage(Mathf.RoundToInt(
-                actionParameters.SelfCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue * actionParameters.Value));
+                actionParameters.SelfCharacter.CharacterStats.StatusDict[StatusType.Poison].StatusValue * actionParameters.Value));
                 
             actionParameters.SelfCharacter.CharacterStats.ClearStatus(StatusType.Poison);
             

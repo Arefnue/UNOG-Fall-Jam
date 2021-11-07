@@ -11,7 +11,7 @@ namespace NueDeck.Scripts.Collection
 {
     public class CollectionManager : MonoBehaviour
     {
-        public static CollectionManager instance;
+        public static CollectionManager Instance;
 
         [Header("Controllers")] 
         public HandController handController;
@@ -24,7 +24,9 @@ namespace NueDeck.Scripts.Collection
 
         private void Awake()
         {
-            instance = this;
+            if (Instance) Destroy(gameObject);
+            
+            Instance = this;
         }
 
         #endregion
@@ -43,7 +45,10 @@ namespace NueDeck.Scripts.Collection
                 if (drawPile.Count <= 0)
                 {
                     var nDrawCount = targetDrawCount - currentDrawCount;
-                    if (nDrawCount >= discardPile.Count) nDrawCount = discardPile.Count;
+                    
+                    if (nDrawCount >= discardPile.Count) 
+                        nDrawCount = discardPile.Count;
+                    
                     ReshuffleDiscardPile();
                     DrawCards(nDrawCount);
                     break;
@@ -59,17 +64,15 @@ namespace NueDeck.Scripts.Collection
             }
             
             foreach (var cardObject in handController.hand)
-            {
                 cardObject.UpdateCardText();
-            }
         }
-
         public void DiscardHand()
         {
-            foreach (var cardBase in handController.hand) cardBase.Discard();
+            foreach (var cardBase in handController.hand) 
+                cardBase.Discard();
+            
             handController.hand.Clear();
         }
-
         public void ExhaustRandomCard()
         {
             CardData targetCard = null;
@@ -85,7 +88,7 @@ namespace NueDeck.Scripts.Collection
                 StartCoroutine(ExhaustCardRoutine(targetCard, handController.discardTransform,
                     CombatManager.instance.currentEnemies[0].transform));
             }
-            else if (instance.handPile.Count > 0)
+            else if (Instance.handPile.Count > 0)
             {
                 targetCard = handPile[Random.Range(0, handPile.Count)];
                 var tCard = handController.hand[0];
@@ -111,25 +114,20 @@ namespace NueDeck.Scripts.Collection
             discardPile?.Remove(targetCard);
             UIManager.Instance.combatCanvas.SetPileTexts();
         }
-
         public void OnCardDiscarded(CardObject targetCard)
         {
             handPile.Remove(targetCard.CardData);
             discardPile.Add(targetCard.CardData);
             UIManager.Instance.combatCanvas.SetPileTexts();
         }
-
         public void OnCardPlayed(CardObject targetCard)
         {
             handPile.Remove(targetCard.CardData);
             discardPile.Add(targetCard.CardData);
             UIManager.Instance.combatCanvas.SetPileTexts();
             foreach (var cardObject in handController.hand)
-            {
                 cardObject.UpdateCardText();
-            }
         }
-
         public void SetGameDeck()
         {
             foreach (var i in GameManager.instance.PersistentGameplayData.CurrentCardsList) 
@@ -142,13 +140,17 @@ namespace NueDeck.Scripts.Collection
         
         private void ReshuffleDiscardPile()
         {
-            foreach (var i in discardPile) drawPile.Add(i);
+            foreach (var i in discardPile) 
+                drawPile.Add(i);
+            
             discardPile.Clear();
         }
 
         private void ReshuffleDrawPile()
         {
-            foreach (var i in drawPile) discardPile.Add(i);
+            foreach (var i in drawPile) 
+                discardPile.Add(i);
+            
             drawPile.Clear();
         }
 

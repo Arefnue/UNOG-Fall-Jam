@@ -17,7 +17,7 @@ namespace NueDeck.Scripts.Card.CardActions
             
             newTarget.CharacterStats.ApplyStatus(StatusType.Block,
                 Mathf.RoundToInt(actionParameters.Value + actionParameters.SelfCharacter.CharacterStats
-                    .statusDict[StatusType.Dexterity].StatusValue));
+                    .StatusDict[StatusType.Dexterity].StatusValue));
             
             FxManager.Instance.PlayFx(newTarget.transform,FxType.Block);
             AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);

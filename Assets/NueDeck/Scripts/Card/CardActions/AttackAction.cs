@@ -12,7 +12,7 @@ namespace NueDeck.Scripts.Card.CardActions
             if (!actionParameters.TargetCharacter) return;
             
             actionParameters.TargetCharacter.CharacterStats.Damage(Mathf.RoundToInt(actionParameters.Value +
-                actionParameters.SelfCharacter.CharacterStats.statusDict[StatusType.Strength].StatusValue));
+                actionParameters.SelfCharacter.CharacterStats.StatusDict[StatusType.Strength].StatusValue));
             
             FxManager.Instance.PlayFx(actionParameters.TargetCharacter.transform,FxType.Attack);
             AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);

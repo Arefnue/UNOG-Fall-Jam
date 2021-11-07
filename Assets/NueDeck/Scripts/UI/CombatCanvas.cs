@@ -24,8 +24,8 @@ namespace NueDeck.Scripts.UI
         
         public void SetPileTexts()
         {
-            drawPileText.text = $"{CollectionManager.instance.drawPile.Count.ToString()}";
-            discardPileText.text = $"{CollectionManager.instance.discardPile.Count.ToString()}";
+            drawPileText.text = $"{CollectionManager.Instance.drawPile.Count.ToString()}";
+            discardPileText.text = $"{CollectionManager.Instance.discardPile.Count.ToString()}";
             manaText.text = $"{GameManager.instance.PersistentGameplayData.CurrentMana.ToString()}/{GameManager.instance.PersistentGameplayData.MAXMana}";
         }
 

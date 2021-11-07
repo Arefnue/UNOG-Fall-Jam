@@ -17,7 +17,7 @@ namespace NueDeck.Scripts.Card.CardActions
 
             if (newTarget) return;
             
-            newTarget.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.SelfCharacter.CharacterStats.statusDict[StatusType.Poison].StatusValue*actionParameters.Value));
+            newTarget.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.SelfCharacter.CharacterStats.StatusDict[StatusType.Poison].StatusValue*actionParameters.Value));
             actionParameters.SelfCharacter.CharacterStats.ClearStatus(StatusType.Poison);
             
             FxManager.Instance.PlayFx(newTarget.transform,FxType.Heal);

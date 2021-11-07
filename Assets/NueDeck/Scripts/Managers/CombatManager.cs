@@ -53,7 +53,7 @@ namespace NueDeck.Scripts.Managers
             BuildEnemies();
             BuildAllies();
           
-            CollectionManager.instance.SetGameDeck();
+            CollectionManager.Instance.SetGameDeck();
            
             UIManager.Instance.combatCanvas.gameObject.SetActive(true);
             UIManager.Instance.informationCanvas.gameObject.SetActive(true);
@@ -72,7 +72,7 @@ namespace NueDeck.Scripts.Managers
                     
                     GameManager.instance.PersistentGameplayData.CurrentMana = GameManager.instance.PersistentGameplayData.MAXMana;
                     
-                    CollectionManager.instance.DrawCards(GameManager.instance.PersistentGameplayData.DrawCount);
+                    CollectionManager.Instance.DrawCards(GameManager.instance.PersistentGameplayData.DrawCount);
                     
                     GameManager.instance.PersistentGameplayData.CanSelectCards = true;
                     
@@ -81,7 +81,7 @@ namespace NueDeck.Scripts.Managers
 
                     OnEnemyTurnStarted?.Invoke();
                     
-                    CollectionManager.instance.DiscardHand();
+                    CollectionManager.Instance.DiscardHand();
                     
                     StartCoroutine(nameof(EnemyTurnRoutine));
                     
@@ -177,11 +177,11 @@ namespace NueDeck.Scripts.Managers
         public void LoseCombat()
         {
             CurrentCombatState = CombatState.EndCombat;
-            CollectionManager.instance.DiscardHand();
-            CollectionManager.instance.discardPile.Clear();
-            CollectionManager.instance.drawPile.Clear();
-            CollectionManager.instance.handPile.Clear();
-            CollectionManager.instance.handController.hand.Clear();
+            CollectionManager.Instance.DiscardHand();
+            CollectionManager.Instance.discardPile.Clear();
+            CollectionManager.Instance.drawPile.Clear();
+            CollectionManager.Instance.handPile.Clear();
+            CollectionManager.Instance.handController.hand.Clear();
             UIManager.Instance.combatCanvas.gameObject.SetActive(true);
             UIManager.Instance.combatCanvas.combatLosePanel.SetActive(true);
         }
@@ -196,10 +196,10 @@ namespace NueDeck.Scripts.Managers
                 GameManager.instance.PersistentGameplayData.MaxHealthDict[currentAlly.allyData.characterID] = currentAlly.CharacterStats.MaxHealth;
             }
             
-            CollectionManager.instance.discardPile.Clear();
-            CollectionManager.instance.drawPile.Clear();
-            CollectionManager.instance.handPile.Clear();
-            CollectionManager.instance.handController.hand.Clear();
+            CollectionManager.Instance.discardPile.Clear();
+            CollectionManager.Instance.drawPile.Clear();
+            CollectionManager.Instance.handPile.Clear();
+            CollectionManager.Instance.handController.hand.Clear();
             
            
             if (GameManager.instance.PersistentGameplayData.IsFinalEncounter)

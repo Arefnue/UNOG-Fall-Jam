@@ -56,15 +56,7 @@ namespace NueDeck.Scripts.Card
             frontImage.sprite = CardData.mySprite;
 
         }
-
-        public void UpdateCardText()
-        {
-            CardData.UpdateDescription();
-            nameText.text = CardData.myName;
-            descText.text = CardData.MyDescription;
-            manaText.text = CardData.myManaCost.ToString();
-        }
-
+        
         #endregion
         
         #region Card Methods
@@ -78,13 +70,13 @@ namespace NueDeck.Scripts.Card
                     .DoAction(new CardActionParameters(playerAction.value,
                         target,self,CardData));
             
-            CollectionManager.instance.OnCardPlayed(this);
+            CollectionManager.Instance.OnCardPlayed(this);
             
             StartCoroutine(nameof(DiscardRoutine));
         }
         public void Discard()
         {
-            CollectionManager.instance.OnCardDiscarded(this);
+            CollectionManager.Instance.OnCardDiscarded(this);
             StartCoroutine(nameof(DiscardRoutine));
         }
         public void Exhaust()
@@ -99,12 +91,20 @@ namespace NueDeck.Scripts.Card
         
         public void SetInactiveMaterialState(bool isInactive, Material inactiveMaterial = null) 
         {
-            if (isInactive == this._isInactive) return; 
+            if (isInactive == _isInactive) return; 
             
             _isInactive = isInactive;
             cardMeshRenderer.sharedMaterial = isInactive ? inactiveMaterial : _cardMaterial;
 
             inactiveImage.gameObject.SetActive(isInactive);
+        }
+        
+        public void UpdateCardText()
+        {
+            CardData.UpdateDescription();
+            nameText.text = CardData.myName;
+            descText.text = CardData.MyDescription;
+            manaText.text = CardData.myManaCost.ToString();
         }
         
         #endregion
@@ -131,7 +131,7 @@ namespace NueDeck.Scripts.Card
            
             var timer = 0f;
             
-            transform.SetParent(CollectionManager.instance.handController.discardTransform);
+            transform.SetParent(CollectionManager.Instance.handController.discardTransform);
             
             var startPos = _transform.localPosition;
             var endPos = Vector3.zero;

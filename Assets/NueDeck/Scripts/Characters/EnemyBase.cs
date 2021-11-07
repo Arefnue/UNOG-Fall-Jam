@@ -2,6 +2,7 @@
 using NueDeck.Scripts.Characters.Enemies;
 using NueDeck.Scripts.Data;
 using NueDeck.Scripts.Data.Characters;
+using NueDeck.Scripts.Data.Containers;
 using NueDeck.Scripts.EnemyBehaviour;
 using NueDeck.Scripts.Enums;
 using NueDeck.Scripts.Interfaces;
@@ -18,11 +19,11 @@ namespace NueDeck.Scripts.Characters
         [Header("Enemy Base References")]
         public EnemyData enemyData;
         public EnemyCanvas enemyCanvas;
+        public SoundProfileData deathSoundProfileData;
       
         protected EnemyAbilityData NextAbility;
         
         #region Setup
-
         public override void BuildCharacter()
         {
             base.BuildCharacter();
@@ -33,13 +34,13 @@ namespace NueDeck.Scripts.Characters
             CombatManager.instance.OnAllyTurnStarted += ShowNextAbility;
             CombatManager.instance.OnEnemyTurnStarted += CharacterStats.TriggerAllStatus;
         }
-
         protected override void OnDeath()
         {
             base.OnDeath();
             CombatManager.instance.OnAllyTurnStarted -= ShowNextAbility;
             CombatManager.instance.OnEnemyTurnStarted -= CharacterStats.TriggerAllStatus;
             CombatManager.instance.OnEnemyDeath(this);
+            AudioManager.Instance.PlayOneShot(deathSoundProfileData.GetRandomClip());
             Destroy(gameObject);
         }
 
@@ -47,7 +48,7 @@ namespace NueDeck.Scripts.Characters
 
         #region Other Methods
 
-        public void ShowNextAbility()
+        private void ShowNextAbility()
         {
             NextAbility = enemyData.enemyAbilityList.RandomItem();
             enemyCanvas.intentionImage.sprite = NextAbility.intention.intentionSprite;
@@ -101,8 +102,6 @@ namespace NueDeck.Scripts.Characters
             {
                 yield return StartCoroutine(BuffRoutine(NextAbility));
             }
-            
-           
         }
         
         protected virtual IEnumerator AttackRoutine(EnemyAbilityData targetAbility)
@@ -110,6 +109,8 @@ namespace NueDeck.Scripts.Characters
             var waitFrame = new WaitForEndOfFrame();
 
             var target = CombatManager.instance.currentAllies.RandomItem();
+            
+            if (!target) yield break;
             
             var startPos = transform.position;
             var endPos = target.transform.position;
@@ -119,7 +120,7 @@ namespace NueDeck.Scripts.Characters
             
             
             yield return StartCoroutine(MoveToTargetRoutine(waitFrame, startPos, endPos, startRot, endRot, 5));
-          
+            
             targetAbility.actionList.ForEach(x=>EnemyActionProcessor.GetAction(x.enemyActionType).DoAction(new EnemyActionParameters(x.value,target,this)));
             
             yield return StartCoroutine(MoveToTargetRoutine(waitFrame, endPos, startPos, endRot, startRot, 5));
