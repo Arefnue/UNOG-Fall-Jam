@@ -92,7 +92,7 @@ namespace NueDeck.Scripts.Characters
         {
             for (int i = 0; i < Enum.GetNames(typeof(StatusType)).Length; i++)
                 TriggerStatus((StatusType) i);
-           
+            
         }
 
         private void TriggerStatus(StatusType targetStatus)
@@ -102,6 +102,7 @@ namespace NueDeck.Scripts.Characters
             if (StatusDict[targetStatus].ClearAtNextTurn)
             {
                 ClearStatus(targetStatus);
+                OnStatusChanged?.Invoke(targetStatus, StatusDict[targetStatus].StatusValue);
                 return;
             }
             
@@ -121,6 +122,12 @@ namespace NueDeck.Scripts.Characters
             
             if (StatusDict[targetStatus].DecreaseOverTurn) 
                 StatusDict[targetStatus].StatusValue--;
+            
+            if (StatusDict[targetStatus].StatusValue == 0)
+                if (!StatusDict[targetStatus].IsPermanent)
+                    ClearStatus(targetStatus);
+            
+            OnStatusChanged?.Invoke(targetStatus, StatusDict[targetStatus].StatusValue);
         }
 
         public void ClearStatus(StatusType targetStatus)
@@ -153,7 +160,7 @@ namespace NueDeck.Scripts.Characters
                     ApplyStatus(StatusType.Block,-value);
 
                     remainingDamage = 0;
-                    if (StatusDict[StatusType.Block].StatusValue < 0)
+                    if (StatusDict[StatusType.Block].StatusValue <= 0)
                     {
                         remainingDamage = StatusDict[StatusType.Block].StatusValue * -1;
                         ClearStatus(StatusType.Block);

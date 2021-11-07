@@ -64,6 +64,7 @@ namespace NueDeck.Scripts.Characters
         {
             if (_statusDict[targetStatus] == null)  return;
           
+            
             _statusDict[targetStatus].statusValueText.text = $"{value}";
         }
         
