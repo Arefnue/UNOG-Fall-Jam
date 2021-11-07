@@ -15,7 +15,7 @@ namespace NueDeck.Scripts.Card.CardActions
                 ? actionParameters.TargetCharacter
                 : actionParameters.SelfCharacter;
 
-            if (newTarget) return;
+            if (!newTarget) return;
             
             newTarget.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.SelfCharacter.CharacterStats.StatusDict[StatusType.Poison].StatusValue*actionParameters.Value));
             actionParameters.SelfCharacter.CharacterStats.ClearStatus(StatusType.Poison);

@@ -10,16 +10,15 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
         
         public override void DoAction(EnemyActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.ApplyStatus(StatusType.Block,Mathf.RoundToInt(actionParameters.value)+actionParameters.targetCharacter.CharacterStats.StatusDict[StatusType.Dexterity].StatusValue);
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Block);
-            }
-            else
-            {
-                actionParameters.selfCharacter.CharacterStats.ApplyStatus(StatusType.Block,Mathf.RoundToInt(actionParameters.value)+actionParameters.selfCharacter.CharacterStats.StatusDict[StatusType.Dexterity].StatusValue);
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Block);
-            }
+            
+            var newTarget = actionParameters.TargetCharacter
+                ? actionParameters.TargetCharacter
+                : actionParameters.SelfCharacter;
+
+            if (!newTarget) return;
+            
+            newTarget.CharacterStats.ApplyStatus(StatusType.Block,Mathf.RoundToInt(actionParameters.Value)+actionParameters.SelfCharacter.CharacterStats.StatusDict[StatusType.Dexterity].StatusValue);
+            FxManager.Instance.PlayFx(newTarget.transform,FxType.Block);
             AudioManager.Instance.PlayOneShot(AudioActionType.Block);
         }
     }

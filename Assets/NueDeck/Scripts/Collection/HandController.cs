@@ -132,7 +132,7 @@ namespace NueDeck.Scripts.Collection
                 var cardTransform = card.transform;
 
                 // Set to inactive material if not enough mana required to use card
-                card.SetInactiveMaterialState(GameManager.instance.PersistentGameplayData.CurrentMana < card.CardData.myManaCost, inactiveCardMaterial);
+                card.SetInactiveMaterialState(GameManager.Instance.PersistentGameplayData.CurrentMana < card.CardData.myManaCost, inactiveCardMaterial);
 
                 var noCardHeld = _heldCard == null; // Whether a card is "held" (outside of hand)
                 var onSelectedCard = noCardHeld && _selected == i;
@@ -206,7 +206,7 @@ namespace NueDeck.Scripts.Collection
                 }
 
                 // Get Selected Card
-                if (GameManager.instance.PersistentGameplayData.CanSelectCards)
+                if (GameManager.Instance.PersistentGameplayData.CanSelectCards)
                 {
                     //float d = (p - mouseWorldPos).sqrMagnitude;
                     if (d < sqrDistance)
@@ -254,10 +254,10 @@ namespace NueDeck.Scripts.Collection
                     Quaternion.LookRotation(cardForward, cardUp), 80f * Time.deltaTime);
                 cardTransform.position = cardPos;
 
-                CombatManager.instance.HighlightCardTarget(_heldCard.CardData.myTargets);
+                CombatManager.Instance.HighlightCardTarget(_heldCard.CardData.myTargets);
 
                 //if (!canSelectCards || cardTransform.position.y <= transform.position.y + 0.5f) {
-                if (!GameManager.instance.PersistentGameplayData.CanSelectCards || _mouseInsideHand)
+                if (!GameManager.Instance.PersistentGameplayData.CanSelectCards || _mouseInsideHand)
                 {
                     //  || sqrDistance <= 2
                     // Card has gone back into hand
@@ -266,7 +266,7 @@ namespace NueDeck.Scripts.Collection
                     _selected = -1;
                     _heldCard = null;
 
-                    CombatManager.instance.DeactivateCardHighlights();
+                    CombatManager.Instance.DeactivateCardHighlights();
 
                     return;
                 }
@@ -282,13 +282,13 @@ namespace NueDeck.Scripts.Collection
             if (!mouseButtonUp) return;
             
             //Remove highlights
-            CombatManager.instance.DeactivateCardHighlights();
+            CombatManager.Instance.DeactivateCardHighlights();
             bool backToHand = true;
                 
-            if (GameManager.instance.PersistentGameplayData.CanUseCards && GameManager.instance.PersistentGameplayData.CurrentMana >= _heldCard.CardData.myManaCost)
+            if (GameManager.Instance.PersistentGameplayData.CanUseCards && GameManager.Instance.PersistentGameplayData.CurrentMana >= _heldCard.CardData.myManaCost)
             {
                 RaycastHit hit;
-                var mainRay = GameManager.instance.mainCam.ScreenPointToRay(mousePos);
+                var mainRay = GameManager.Instance.mainCam.ScreenPointToRay(mousePos);
                 
                 if (Physics.Raycast(mainRay, out hit, 1000, targetLayer))
                 {
@@ -304,7 +304,7 @@ namespace NueDeck.Scripts.Collection
                                  .GetComponent<AllyBase>()))
                         {
                             backToHand = false;
-                            _heldCard.Use(CombatManager.instance.currentAllies[0],character.GetCharacterBase());
+                            _heldCard.Use(CombatManager.Instance.currentAllies[0],character.GetCharacterBase());
                         }
                         
                     }
@@ -315,7 +315,7 @@ namespace NueDeck.Scripts.Collection
                     if (_heldCard.CardData.usableWithoutTarget)
                     {
                         backToHand = false;
-                        _heldCard.Use(CombatManager.instance.currentAllies[0],null);
+                        _heldCard.Use(CombatManager.Instance.currentAllies[0],null);
                     }
                 }
                 

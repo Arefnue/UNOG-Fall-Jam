@@ -33,6 +33,7 @@ namespace NueDeck.Scripts.Managers
                 Destroy(gameObject);
                 return;
             }
+            
             for (int i = 0; i < Enum.GetValues(typeof(AudioActionType)).Length; i++)
             {
                 _audioDict.Add((AudioActionType)i,soundProfileDataList.FirstOrDefault(x=>x.audioType == (AudioActionType)i));

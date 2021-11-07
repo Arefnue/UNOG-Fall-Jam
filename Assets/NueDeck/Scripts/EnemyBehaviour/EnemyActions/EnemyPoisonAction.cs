@@ -9,16 +9,15 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
         public override EnemyActionType ActionType => EnemyActionType.Poison;
         public override void DoAction(EnemyActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.ApplyStatus(StatusType.Poison,Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Poison);
-            }
-            else
-            {
-                actionParameters.selfCharacter.CharacterStats.ApplyStatus(StatusType.Poison,Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Poison);
-            }
+            
+            var newTarget = actionParameters.TargetCharacter
+                ? actionParameters.TargetCharacter
+                : actionParameters.SelfCharacter;
+
+            if (!newTarget) return;
+            
+            newTarget.CharacterStats.ApplyStatus(StatusType.Poison,Mathf.RoundToInt(actionParameters.Value));
+            FxManager.Instance.PlayFx(newTarget.transform,FxType.Poison);
             AudioManager.Instance.PlayOneShot(AudioActionType.Poison);
         }
     }

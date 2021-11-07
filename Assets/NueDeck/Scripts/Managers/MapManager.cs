@@ -9,31 +9,24 @@ namespace NueDeck.Scripts.Managers
     public class MapManager : MonoBehaviour
     {
         public List<EncounterButton> encounterButtonList;
-
-
+        
         private void Start()
         {
             PrepareEncounters();
         }
 
 
-        public void PrepareEncounters()
+        private void PrepareEncounters()
         {
             for (int i = 0; i < encounterButtonList.Count; i++)
             {
                 var btn = encounterButtonList[i];
-                if (GameManager.instance.PersistentGameplayData.CurrentEncounterId == i)
-                {
+                if (GameManager.Instance.PersistentGameplayData.CurrentEncounterId == i)
                     btn.SetStatus(EncounterButtonStatus.Active);
-                }
-                else if (GameManager.instance.PersistentGameplayData.CurrentEncounterId > i)
-                {
+                else if (GameManager.Instance.PersistentGameplayData.CurrentEncounterId > i)
                     btn.SetStatus(EncounterButtonStatus.Completed);
-                }
                 else
-                {
                     btn.SetStatus(EncounterButtonStatus.Passive);
-                }
             }
         }
     }

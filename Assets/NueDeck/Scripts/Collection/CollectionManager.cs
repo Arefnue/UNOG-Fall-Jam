@@ -39,7 +39,7 @@ namespace NueDeck.Scripts.Collection
 
             for (var i = 0; i < targetDrawCount; i++)
             {
-                if (GameManager.instance.GameplayData.maxCardOnHand<=handPile.Count)
+                if (GameManager.Instance.GameplayData.maxCardOnHand<=handPile.Count)
                     return;
                 
                 if (drawPile.Count <= 0)
@@ -55,7 +55,7 @@ namespace NueDeck.Scripts.Collection
                 }
 
                 var randomCard = drawPile[Random.Range(0, drawPile.Count)];
-                var clone = GameManager.instance.BuildAndGetCard(randomCard, handController.drawTransform);
+                var clone = GameManager.Instance.BuildAndGetCard(randomCard, handController.drawTransform);
                 handController.AddCardToHand(clone);
                 handPile.Add(randomCard);
                 drawPile.Remove(randomCard);
@@ -80,13 +80,13 @@ namespace NueDeck.Scripts.Collection
             {
                 targetCard = drawPile[Random.Range(0, drawPile.Count)];
                 StartCoroutine(ExhaustCardRoutine(targetCard, handController.drawTransform,
-                    CombatManager.instance.currentEnemies[0].transform));
+                    CombatManager.Instance.currentEnemies[0].transform));
             }
             else if (discardPile.Count > 0)
             {
                 targetCard = discardPile[Random.Range(0, discardPile.Count)];
                 StartCoroutine(ExhaustCardRoutine(targetCard, handController.discardTransform,
-                    CombatManager.instance.currentEnemies[0].transform));
+                    CombatManager.Instance.currentEnemies[0].transform));
             }
             else if (Instance.handPile.Count > 0)
             {
@@ -100,7 +100,7 @@ namespace NueDeck.Scripts.Collection
                     }
 
                 StartCoroutine(ExhaustCardRoutine(targetCard, tCard.transform,
-                    CombatManager.instance.currentEnemies[0].transform));
+                    CombatManager.Instance.currentEnemies[0].transform));
                 handController.hand?.Remove(tCard);
                 Destroy(tCard.gameObject);
             }
@@ -130,7 +130,7 @@ namespace NueDeck.Scripts.Collection
         }
         public void SetGameDeck()
         {
-            foreach (var i in GameManager.instance.PersistentGameplayData.CurrentCardsList) 
+            foreach (var i in GameManager.Instance.PersistentGameplayData.CurrentCardsList) 
                 drawPile.Add(i);
         }
 
@@ -163,7 +163,7 @@ namespace NueDeck.Scripts.Collection
             var waitFrame = new WaitForEndOfFrame();
             var timer = 0f;
 
-            var card = GameManager.instance.BuildAndGetCard(targetData, startTransform);
+            var card = GameManager.Instance.BuildAndGetCard(targetData, startTransform);
             card.transform.SetParent(endTransform);
             var startPos = card.transform.localPosition;
             var endPos = Vector3.zero;

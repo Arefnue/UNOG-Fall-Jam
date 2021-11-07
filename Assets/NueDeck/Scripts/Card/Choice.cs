@@ -28,7 +28,7 @@ namespace NueDeck.Scripts.Card
 
         private void OnChoice()
         {
-            GameManager.instance.PersistentGameplayData.CurrentCardsList.Add(_cardObject.CardData);
+            GameManager.Instance.PersistentGameplayData.CurrentCardsList.Add(_cardObject.CardData);
             
             UIManager.Instance.rewardCanvas.choicePanel.DisablePanel();
         }

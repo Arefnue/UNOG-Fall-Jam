@@ -13,7 +13,7 @@ namespace NueDeck.Scripts.Card.CardActions
                 ? actionParameters.TargetCharacter
                 : actionParameters.SelfCharacter;
             
-            if (newTarget) return;
+            if (!newTarget) return;
             
             newTarget.CharacterStats.IncreaseMaxHealth(Mathf.RoundToInt(actionParameters.Value));
             

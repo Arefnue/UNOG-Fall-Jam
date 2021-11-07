@@ -13,7 +13,7 @@ namespace NueDeck.Scripts.Card.CardActions
                 ? actionParameters.TargetCharacter
                 : actionParameters.SelfCharacter;
             
-            if (newTarget) return;
+            if (!newTarget) return;
             
             newTarget.CharacterStats.ApplyStatus(StatusType.Strength,Mathf.RoundToInt(actionParameters.Value));
             FxManager.Instance.PlayFx(newTarget.transform,FxType.Str);

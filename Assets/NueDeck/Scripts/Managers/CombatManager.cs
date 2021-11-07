@@ -12,7 +12,7 @@ namespace NueDeck.Scripts.Managers
 {
     public class CombatManager : MonoBehaviour
     {
-        public static CombatManager instance;
+        public static CombatManager Instance;
         
         public List<Transform> enemyPosList;
         public List<Transform> allyPosList;
@@ -38,7 +38,8 @@ namespace NueDeck.Scripts.Managers
 
         private void Awake()
         {
-            instance = this;
+            if (Instance) Destroy(gameObject);
+            Instance = this;
             
             CurrentCombatState = CombatState.PrepareCombat;
         }
@@ -48,7 +49,7 @@ namespace NueDeck.Scripts.Managers
             StartCombat();
         }
 
-        public void StartCombat()
+        private void StartCombat()
         {
             BuildEnemies();
             BuildAllies();
@@ -70,11 +71,11 @@ namespace NueDeck.Scripts.Managers
 
                     OnAllyTurnStarted?.Invoke();
                     
-                    GameManager.instance.PersistentGameplayData.CurrentMana = GameManager.instance.PersistentGameplayData.MAXMana;
+                    GameManager.Instance.PersistentGameplayData.CurrentMana = GameManager.Instance.PersistentGameplayData.MAXMana;
                     
-                    CollectionManager.Instance.DrawCards(GameManager.instance.PersistentGameplayData.DrawCount);
+                    CollectionManager.Instance.DrawCards(GameManager.Instance.PersistentGameplayData.DrawCount);
                     
-                    GameManager.instance.PersistentGameplayData.CanSelectCards = true;
+                    GameManager.Instance.PersistentGameplayData.CanSelectCards = true;
                     
                     break;
                 case CombatState.EnemyTurn:
@@ -85,12 +86,12 @@ namespace NueDeck.Scripts.Managers
                     
                     StartCoroutine(nameof(EnemyTurnRoutine));
                     
-                    GameManager.instance.PersistentGameplayData.CanSelectCards = false;
+                    GameManager.Instance.PersistentGameplayData.CanSelectCards = false;
                     
                     break;
                 case CombatState.EndCombat:
                     
-                    GameManager.instance.PersistentGameplayData.CanSelectCards = false;
+                    GameManager.Instance.PersistentGameplayData.CanSelectCards = false;
                     
                     break;
                 default:
@@ -123,7 +124,7 @@ namespace NueDeck.Scripts.Managers
         
         private void BuildEnemies()
         {
-            var encounter = GameManager.instance.EncounterData.GetEnemyEncounter(GameManager.instance.PersistentGameplayData.CurrentStageId,GameManager.instance.PersistentGameplayData.CurrentEncounterId,GameManager.instance.PersistentGameplayData.IsFinalEncounter).enemyList;
+            var encounter = GameManager.Instance.EncounterData.GetEnemyEncounter(GameManager.Instance.PersistentGameplayData.CurrentStageId,GameManager.Instance.PersistentGameplayData.CurrentEncounterId,GameManager.Instance.PersistentGameplayData.IsFinalEncounter).enemyList;
             for (var i = 0; i < encounter.Count; i++)
             {
                 var clone = Instantiate(encounter[i], enemyPosList.Count >= i ? enemyPosList[i] : enemyPosList[0]);
@@ -134,9 +135,9 @@ namespace NueDeck.Scripts.Managers
         
         private void BuildAllies()
         {
-            for (var i = 0; i < GameManager.instance.PersistentGameplayData.AllyList.Count; i++)
+            for (var i = 0; i < GameManager.Instance.PersistentGameplayData.AllyList.Count; i++)
             {
-                var clone = Instantiate(GameManager.instance.PersistentGameplayData.AllyList[i], allyPosList.Count >= i ? allyPosList[i] : allyPosList[0]);
+                var clone = Instantiate(GameManager.Instance.PersistentGameplayData.AllyList[i], allyPosList.Count >= i ? allyPosList[i] : allyPosList[0]);
                 clone.BuildCharacter();
                 currentAllies.Add(clone);
             }
@@ -153,7 +154,7 @@ namespace NueDeck.Scripts.Managers
 
         public void IncreaseMana(int target)
         {
-            GameManager.instance.PersistentGameplayData.CurrentMana += target;
+            GameManager.Instance.PersistentGameplayData.CurrentMana += target;
             UIManager.Instance.combatCanvas.SetPileTexts();
         }
         
@@ -162,19 +163,23 @@ namespace NueDeck.Scripts.Managers
             switch (targetTargets)
             {
                 case ActionTargets.Enemy:
-                    foreach (var currentEnemy in CombatManager.instance.currentEnemies)
+                    foreach (var currentEnemy in CombatManager.Instance.currentEnemies)
                         currentEnemy.enemyCanvas.SetHighlight(true);
                     break;
                 case ActionTargets.Ally:
-                    foreach (var currentAlly in CombatManager.instance.currentAllies)
+                    foreach (var currentAlly in CombatManager.Instance.currentAllies)
                        currentAlly.allyCanvas.SetHighlight(true);
+                    break;
+                case ActionTargets.AllEnemies:
+                    break;
+                case ActionTargets.AllAllies:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(targetTargets), targetTargets, null);
             }
         }
-        
-        public void LoseCombat()
+
+        private void LoseCombat()
         {
             CurrentCombatState = CombatState.EndCombat;
             CollectionManager.Instance.DiscardHand();
@@ -186,14 +191,14 @@ namespace NueDeck.Scripts.Managers
             UIManager.Instance.combatCanvas.combatLosePanel.SetActive(true);
         }
 
-        public void WinCombat()
+        private void WinCombat()
         {
             CurrentCombatState = CombatState.EndCombat;
 
             foreach (var currentAlly in currentAllies)
             {
-                GameManager.instance.PersistentGameplayData.CurrentHealthDict[currentAlly.allyData.characterID] = currentAlly.CharacterStats.CurrentHealth;
-                GameManager.instance.PersistentGameplayData.MaxHealthDict[currentAlly.allyData.characterID] = currentAlly.CharacterStats.MaxHealth;
+                GameManager.Instance.PersistentGameplayData.CurrentHealthDict[currentAlly.allyData.characterID] = currentAlly.CharacterStats.CurrentHealth;
+                GameManager.Instance.PersistentGameplayData.MaxHealthDict[currentAlly.allyData.characterID] = currentAlly.CharacterStats.MaxHealth;
             }
             
             CollectionManager.Instance.discardPile.Clear();
@@ -202,13 +207,13 @@ namespace NueDeck.Scripts.Managers
             CollectionManager.Instance.handController.hand.Clear();
             
            
-            if (GameManager.instance.PersistentGameplayData.IsFinalEncounter)
+            if (GameManager.Instance.PersistentGameplayData.IsFinalEncounter)
             {
                 UIManager.Instance.combatCanvas.combatWinPanel.SetActive(true);
             }
             else
             {
-                GameManager.instance.PersistentGameplayData.CurrentEncounterId++;
+                GameManager.Instance.PersistentGameplayData.CurrentEncounterId++;
                 UIManager.Instance.combatCanvas.gameObject.SetActive(false);
                 UIManager.Instance.rewardCanvas.gameObject.SetActive(true);
                 UIManager.Instance.rewardCanvas.BuildReward(RewardType.Gold);

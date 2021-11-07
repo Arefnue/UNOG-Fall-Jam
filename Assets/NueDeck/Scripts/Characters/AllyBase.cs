@@ -22,28 +22,28 @@ namespace NueDeck.Scripts.Characters
             allyCanvas.InitCanvas();
             CharacterStats = new CharacterStats(allyData.maxHealth,allyCanvas);
 
-            if (GameManager.instance.PersistentGameplayData.CurrentHealthDict.ContainsKey(allyData.characterID))
+            if (GameManager.Instance.PersistentGameplayData.CurrentHealthDict.ContainsKey(allyData.characterID))
             {
-                CharacterStats.CurrentHealth = GameManager.instance.PersistentGameplayData.CurrentHealthDict[allyData.characterID];
-                CharacterStats.MaxHealth = GameManager.instance.PersistentGameplayData.MaxHealthDict[allyData.characterID];
+                CharacterStats.CurrentHealth = GameManager.Instance.PersistentGameplayData.CurrentHealthDict[allyData.characterID];
+                CharacterStats.MaxHealth = GameManager.Instance.PersistentGameplayData.MaxHealthDict[allyData.characterID];
             }
             else
             {
-                GameManager.instance.PersistentGameplayData.CurrentHealthDict.Add(allyData.characterID,CharacterStats.CurrentHealth);
-                GameManager.instance.PersistentGameplayData.MaxHealthDict.Add(allyData.characterID,CharacterStats.MaxHealth);
+                GameManager.Instance.PersistentGameplayData.CurrentHealthDict.Add(allyData.characterID,CharacterStats.CurrentHealth);
+                GameManager.Instance.PersistentGameplayData.MaxHealthDict.Add(allyData.characterID,CharacterStats.MaxHealth);
             }
             
             CharacterStats.OnDeath += OnDeath;
             CharacterStats.SetCurrentHealth(CharacterStats.CurrentHealth);
-            CombatManager.instance.OnAllyTurnStarted += CharacterStats.TriggerAllStatus;
+            CombatManager.Instance.OnAllyTurnStarted += CharacterStats.TriggerAllStatus;
 
         }
         
         protected override void OnDeath()
         {
             base.OnDeath();
-            CombatManager.instance.OnAllyTurnStarted -= CharacterStats.TriggerAllStatus;
-            CombatManager.instance.OnAllyDeath(this);
+            CombatManager.Instance.OnAllyTurnStarted -= CharacterStats.TriggerAllStatus;
+            CombatManager.Instance.OnAllyDeath(this);
             Destroy(gameObject);
         }
 

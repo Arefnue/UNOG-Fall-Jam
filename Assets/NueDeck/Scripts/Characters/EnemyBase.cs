@@ -31,15 +31,15 @@ namespace NueDeck.Scripts.Characters
             CharacterStats = new CharacterStats(enemyData.maxHealth,enemyCanvas);
             CharacterStats.OnDeath += OnDeath;
             CharacterStats.SetCurrentHealth(CharacterStats.CurrentHealth);
-            CombatManager.instance.OnAllyTurnStarted += ShowNextAbility;
-            CombatManager.instance.OnEnemyTurnStarted += CharacterStats.TriggerAllStatus;
+            CombatManager.Instance.OnAllyTurnStarted += ShowNextAbility;
+            CombatManager.Instance.OnEnemyTurnStarted += CharacterStats.TriggerAllStatus;
         }
         protected override void OnDeath()
         {
             base.OnDeath();
-            CombatManager.instance.OnAllyTurnStarted -= ShowNextAbility;
-            CombatManager.instance.OnEnemyTurnStarted -= CharacterStats.TriggerAllStatus;
-            CombatManager.instance.OnEnemyDeath(this);
+            CombatManager.Instance.OnAllyTurnStarted -= ShowNextAbility;
+            CombatManager.Instance.OnEnemyTurnStarted -= CharacterStats.TriggerAllStatus;
+            CombatManager.Instance.OnEnemyDeath(this);
             AudioManager.Instance.PlayOneShot(deathSoundProfileData.GetRandomClip());
             Destroy(gameObject);
         }
@@ -108,7 +108,7 @@ namespace NueDeck.Scripts.Characters
         {
             var waitFrame = new WaitForEndOfFrame();
 
-            var target = CombatManager.instance.currentAllies.RandomItem();
+            var target = CombatManager.Instance.currentAllies.RandomItem();
             
             if (!target) yield break;
             
@@ -167,8 +167,6 @@ namespace NueDeck.Scripts.Characters
         }
 
         #endregion
-        
-       
         
     }
 }

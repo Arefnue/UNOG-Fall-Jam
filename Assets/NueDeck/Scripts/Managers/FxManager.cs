@@ -9,12 +9,10 @@ namespace NueDeck.Scripts.Managers
     public class FxManager : MonoBehaviour
     {
         public static FxManager Instance;
-       
-
+        
         [Header("Fx")] 
         public List<FxBundle> fxList;
-
-
+        
         public Dictionary<FxType, GameObject> fxDict = new Dictionary<FxType, GameObject>();
         
         private void Awake()
@@ -28,10 +26,8 @@ namespace NueDeck.Scripts.Managers
 
         public void PlayFx(Transform targetTransform, FxType targetFx)
         {
-            var clone = Instantiate(fxDict[targetFx], targetTransform);
-            
+            Instantiate(fxDict[targetFx], targetTransform);
         }
-        
     }
 
     [Serializable]

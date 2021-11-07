@@ -9,7 +9,7 @@ namespace NueDeck.Scripts.Card.CardActions
         public override CardActionType ActionType => CardActionType.EarnMana;
         public override void DoAction(CardActionParameters actionParameters)
         {
-            CombatManager.instance.IncreaseMana(Mathf.RoundToInt(actionParameters.Value));
+            CombatManager.Instance.IncreaseMana(Mathf.RoundToInt(actionParameters.Value));
             FxManager.Instance.PlayFx(actionParameters.SelfCharacter.transform,FxType.Buff);
             AudioManager.Instance.PlayOneShot(actionParameters.CardData.audioType);
         }

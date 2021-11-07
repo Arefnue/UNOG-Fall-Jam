@@ -37,10 +37,9 @@ namespace NueDeck.Scripts.Characters
        
         public Action OnDeath;
         public Action<int, int> OnHealthChanged;
-        public Action<StatusType,int> OnStatusChanged;
-        public Action<StatusType, int> OnStatusApplied;
-        public Action<StatusType> OnStatusCleared;
-        private CharacterCanvas _characterCanvas;
+        private readonly Action<StatusType,int> OnStatusChanged;
+        private readonly Action<StatusType, int> OnStatusApplied;
+        private readonly Action<StatusType> OnStatusCleared;
 
         public readonly Dictionary<StatusType, StatusStats> StatusDict = new Dictionary<StatusType, StatusStats>();
         
@@ -50,11 +49,11 @@ namespace NueDeck.Scripts.Characters
             CurrentHealth = maxHealth;
             SetAllStatus();
 
-            _characterCanvas = characterCanvas;
-            OnHealthChanged += _characterCanvas.UpdateHealthText;
-            OnStatusChanged += _characterCanvas.UpdateStatusText;
-            OnStatusApplied += _characterCanvas.ApplyStatus;
-            OnStatusCleared += _characterCanvas.ClearStatus;
+            var characterCanvas1 = characterCanvas;
+            OnHealthChanged += characterCanvas1.UpdateHealthText;
+            OnStatusChanged += characterCanvas1.UpdateStatusText;
+            OnStatusApplied += characterCanvas1.ApplyStatus;
+            OnStatusCleared += characterCanvas1.ClearStatus;
         }
 
         private void SetAllStatus()

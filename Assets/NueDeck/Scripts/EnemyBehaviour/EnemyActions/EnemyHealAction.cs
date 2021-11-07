@@ -9,16 +9,14 @@ namespace NueDeck.Scripts.EnemyBehaviour.EnemyActions
         public override EnemyActionType ActionType => EnemyActionType.Heal;
         public override void DoAction(EnemyActionParameters actionParameters)
         {
-            if (actionParameters.targetCharacter)
-            {
-                actionParameters.targetCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.targetCharacter.transform,FxType.Heal);
-            }
-            else
-            {
-                actionParameters.selfCharacter.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.value));
-                FxManager.Instance.PlayFx(actionParameters.selfCharacter.transform,FxType.Heal);
-            }
+            var newTarget = actionParameters.TargetCharacter
+                ? actionParameters.TargetCharacter
+                : actionParameters.SelfCharacter;
+
+            if (!newTarget) return;
+            
+            newTarget.CharacterStats.Heal(Mathf.RoundToInt(actionParameters.Value));
+            FxManager.Instance.PlayFx(newTarget.transform,FxType.Heal);
             AudioManager.Instance.PlayOneShot(AudioActionType.Heal);
         }
     }

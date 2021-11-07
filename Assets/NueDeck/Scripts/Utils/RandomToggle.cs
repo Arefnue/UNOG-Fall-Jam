@@ -11,8 +11,8 @@ namespace NueDeck.Scripts
 
         public void CheckToggle()
         {
-            GameManager.instance.PersistentGameplayData.IsRandomHand = toggle.isOn;
-            GameManager.instance.SetInitalHand();
+            GameManager.Instance.PersistentGameplayData.IsRandomHand = toggle.isOn;
+            GameManager.Instance.SetInitalHand();
         }
         
     }

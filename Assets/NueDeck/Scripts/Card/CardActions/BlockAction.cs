@@ -13,7 +13,8 @@ namespace NueDeck.Scripts.Card.CardActions
                 ? actionParameters.TargetCharacter
                 : actionParameters.SelfCharacter;
 
-            if (newTarget) return;
+            
+            if (!newTarget) return;
             
             newTarget.CharacterStats.ApplyStatus(StatusType.Block,
                 Mathf.RoundToInt(actionParameters.Value + actionParameters.SelfCharacter.CharacterStats
